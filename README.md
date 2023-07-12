@@ -16,8 +16,8 @@ Cypress Command examples are separated into their own `it` functions.
 Initial setup followed steps from [Writing Your First E2E Test](https://docs.cypress.io/guides/end-to-end-testing/writing-your-first-end-to-end-test?utm_source=Binary%3A+App&utm_medium=Docs+Menu&utm_content=First+Test)
 
 ## How to execute tests
-Use `npx cypress open` to open Cypress
+Open Cypress with `npx cypress open`
 
-Run headless with `npx cypress run --headless`
+Tests are automatically run when file is saved.
 
-Tests automatically run when file is saved.
+Run tests headless with `npx cypress run --headless`
