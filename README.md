@@ -7,14 +7,16 @@
 ## Description
 Automate Cypress Command examples from https://example.cypress.io/
 
-### example-cypress-spec.cy.js
+Automate "Dogs" and "Cats" google search
+
+### example-cypress.spec.cy.js
 Tests run through each Cypress Command in the Querying, Traversal, and Actions sections
 
 Each page (Querying, Traversal, Actions) has it's own `describe` function.
 
 Cypress Command examples are separated into their own `it` functions.
 
-### google-search-spec.cy.js
+### google-search.spec.cy.js
 Tests search for "Dogs" and "Cats" on Google then use implicit/explicit assertions to verify the search result
 
 ## How to execute tests
