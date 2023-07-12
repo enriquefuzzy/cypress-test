@@ -1,6 +1,5 @@
-describe('Testing example with example.cypress.io', () => {
-  it('Verify Querying page', () => {
-    // cy.viewport('iphone-x')
+describe('Querying page examples', () => {
+  it('Verify on Querying page', () => {
     cy.visit('https://example.cypress.io')
 
     // Alternate ways to assert text
@@ -13,6 +12,11 @@ describe('Testing example with example.cypress.io', () => {
     cy.url().should('include', '/commands/querying')
     cy.contains('Querying').should('exist')
     cy.contains('Examples of querying for DOM elements in Cypress, for a full reference of commands').should('exist')
+  })
+
+  it('Verify cy.get() examples', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('get').click()
 
     // cy.get() examples
     cy.get('#query-btn').should('contain', 'Button')
@@ -43,8 +47,47 @@ describe('Testing example with example.cypress.io', () => {
     })
   })
 
-  it('Verify Traversal page', () => {
-    // cy.viewport('iphone-x')
+  it('Verify cy.contains() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('contains').click()
+
+    // cy.contains() example
+    cy.get('.query-list').contains('bananas').should('have.class', 'third')
+  })
+
+  it('Verify .within() examples', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('within').click()
+  
+    // .within() example
+    cy.get('.query-form').within(() => {
+      cy.get('input:first').should('have.attr', 'placeholder', 'Email')
+      cy.get('input:last').should('have.attr', 'placeholder', 'Password')
+    })
+
+    // .type() examples
+    cy.get('#inputEmail').should('have.attr', 'placeholder', 'Email')
+    cy.get('#inputName').type('Enrique').should('have.value', 'Enrique')
+    cy.get('#inputEmail').type('test@email.com')
+    cy.get('#inputPassword').type('secret!')
+  })
+  
+  it('Verify cy.root() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('root').click()
+  
+    // cy.root() examples
+    cy.root().should('match', 'html')
+    cy.get('.query-ul').within(() => {
+      // In this within, the root is now the ul DOM element
+      cy.root().should('have.class', 'query-ul')
+    })
+  })
+})
+
+
+describe('Traversal page examples', () => {
+  it('Verify on Traversal page', () => {
     cy.visit('https://example.cypress.io')
     cy.contains('children').click()
 
@@ -52,76 +95,170 @@ describe('Testing example with example.cypress.io', () => {
     cy.url().should('include', '/commands/traversal')
     cy.contains('Traversal').should('exist')
     cy.contains('Examples of traversing DOM elements in Cypress').should('exist')
+  })
+
+  it('Verify .children() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('children').click()
 
     // .children() example
     cy.get('.traversal-breadcrumb').children('.active').should('contain', 'Data')
+  })
+
+  it('Verify .closest() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('closest').click()
 
     // .closest() example
     cy.get('.traversal-badge').closest('ul').should('have.class', 'list-group')
+  })
+
+  it('Verify .eq() examples', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains(/^eq$/).click()
 
     // .eq() examples
     cy.get('.traversal-list>li').eq(1).should('contain', 'siamese')
     cy.get('.traversal-list>li').eq(3).should('contain', 'sphynx')
     cy.get('.traversal-list>li').eq(0).should('contain', 'tabby')
+  })
+
+  it('Verify .filter() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('filter').click()
 
     // .filter() example
     cy.get('.traversal-nav>li').filter('.active').should('contain', 'About')
+  })
+
+  it('Verify .find() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('find').click()
 
     // .find() example
     cy.get('.traversal-pagination').find('li').find('a').should('have.length', 7)
+  })
+
+  it('Verify .first() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('first').click()
 
     // .first() example
     cy.get('.traversal-table td').first().should('contain', '1')
+  })
+
+  it('Verify .last() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('last').click()
 
     // .last() example
     cy.get('.traversal-buttons .btn').last().should('contain', 'Submit')
+  })
+  
+  it('Verify .next() examples', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('next').click()
 
     // .next() examples
     cy.get('.traversal-ul').contains('apples').next().should('contain', 'oranges')
     cy.get('.traversal-ul').contains('oranges').next().should('contain', 'bananas')
+  })
+
+  it('Verify .nextAll() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('nextAll').click()
 
     // .nextAll() example
     cy.get('.traversal-next-all').contains('oranges').nextAll().should('have.length', 3)
+  })
+
+  it('Verify .nextUntil() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('nextUntil').click()
 
     // .nextUntil() example
     cy.get('#veggies').nextUntil('#nuts').should('have.length', 3)
+  })
+
+  it('Verify .not() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('not').click()
 
     // .not() example
     cy.get('.traversal-disabled .btn').not('[disabled]').should('not.contain', 'Disabled')
+  })
+
+  it('Verify .parent() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('parent').click()
 
     // .parent() example
     cy.get('.traversal-mark').parent().should('contain', 'Morbi leo risus')
+  })
+
+  it('Verify .parents() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('parents').click()
 
     // .parents() example
     cy.get('.traversal-cite').parents().should('match', 'blockquote')
+  })
+
+  it('Verify .parentsUntil() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('parentsUntil').click()
 
     // .parentsUntil() example
     cy.get('.clothes-nav').find('.active').parentsUntil('.clothes-nav').should('have.length', 2)
+  })
+
+  it('Verify .prev() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('prev').click()
 
     // .prev() example
     cy.get('.birds').find('.active').prev().should('contain', 'Lorikeets')
+  })
+
+  it('Verify .prevAll() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('prevAll').click()
 
     // .prevAll() example
     cy.get('.fruits-list').find('.third').prevAll().should('have.length', 2)
+  })
+
+  it('Verify .prevUntil() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('prevUntil').click()
 
     // .prevUntil() example
     cy.get('.foods-list').find('#nuts').prevUntil('#veggies').should('have.length', 3)
+  })
+
+  it('Verify .siblings() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('siblings').click()
 
     // .siblings() example
     cy.get('.traversal-pills .active').siblings().should('have.length', 2)
   })
+})
 
-  it('Verify Actions page', () => {
-    // cy.viewport(1280, 720)
+describe('Actions page examples', () => {
+  it('Verify on Actions page', () => {
     cy.visit('https://example.cypress.io')
-
-    // Clicks the link with text 'type'
     cy.contains('type').click()
 
     // Should be on a new URL which includes '/commands/actions'
     cy.url().should('include', '/commands/actions')
     cy.contains('Actions').should('exist')
     cy.contains('Examples of actions being performed on DOM elements in Cypress,').should('exist')
+  })
+
+  it('Verify .type() examples', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('type').click()
 
     // Get an input, type into it
     cy.get('.action-email').type('fake@email.com').should('have.value', 'fake@email.com')
@@ -133,26 +270,51 @@ describe('Testing example with example.cypress.io', () => {
       // like whether the input is visible or disabled
       .type('disabled error checking', { force: true })
       .should('have.value', 'disabled error checking')
+  })
+
+  it('Verify .focus() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('focus').click()
 
     // .focus() example
     cy.get('.action-focus').focus()
       .should('have.class', 'focus')
       .prev().should('have.attr', 'style', 'color: orange;')
+  })
+
+  it('Verify .blur() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('blur').click()
 
     // .blur() example
     cy.get('.action-blur').type('About to blur').blur()
       .should('have.class', 'error')
       .prev().should('have.attr', 'style', 'color: red;')
+  })
+
+  it('Verify .clear() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('clear').click()
 
     // .clear() example
     cy.get('.action-clear').type('Clear this text')
       .should('have.value', 'Clear this text')
       .clear()
       .should('have.value', '')
+  })
+
+  it('Verify .submit() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('submit').click()
 
     // .submit() example
     cy.get('.action-form').find('[type="text"]').type('HALFOFF')
     cy.get('.action-form').submit().next().should('contain', 'Your form has been submitted!')
+  })
+
+  it('Verify .click() examples', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains(/^click$/).click()
 
     // .click() examples
     cy.get('.action-btn').click()
@@ -180,14 +342,29 @@ describe('Testing example with example.cypress.io', () => {
     cy.get('.action-labels>.label').click({ multiple: true })
     // Ignore error checking prior to clicking
     cy.get('.action-opacity>.btn').click({ force: true })
+  })
 
-    // .dbclick() example
+  it('Verify .dblclick() examples', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('dblclick').click()
+
+    // .dblclick() example
     cy.get('.action-div').dblclick().should('not.be.visible')
     cy.get('.action-input-hidden').should('be.visible')
+  })
+
+  it('Verify .rightclick() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('rightclick').click()
 
     // .rightclick() example
     cy.get('.rightclick-action-div').rightclick().should('not.be.visible')
     cy.get('.rightclick-action-input-hidden').should('be.visible')
+  })
+
+  it('Verify .check() examples', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('check').click()
 
     // .check() examples
     // By default, .check() will check all
@@ -212,6 +389,11 @@ describe('Testing example with example.cypress.io', () => {
 
     cy.get('.action-radios [type="radio"]')
       .check('radio3', { force: true }).should('be.checked')
+  })
+
+  it('Verify .uncheck() examples', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('uncheck').click()
 
     // .uncheck() examples
     // By default, .uncheck() will uncheck all matching
@@ -230,7 +412,12 @@ describe('Testing example with example.cypress.io', () => {
     // Ignore error checking prior to unchecking
     cy.get('.action-check [disabled]')
       .uncheck({ force: true }).should('not.be.checked')
-    
+  })
+
+  it('Verify .select() examples', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('select').click()
+
     // .select() examples
     // at first, no option should be selected
     cy.get('.action-select').should('have.value', '--Select a fruit--')
@@ -254,6 +441,11 @@ describe('Testing example with example.cypress.io', () => {
       .invoke('val').should('deep.equal', ['fr-apples', 'fr-oranges', 'fr-bananas'])
     // assert the selected values include oranges
     cy.get('.action-select-multiple').invoke('val').should('include', 'fr-oranges')
+  })
+
+  it('Verify .scrollIntoView() examples', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('scrollIntoView').click()
 
     // .scrollIntoView() examples
     cy.get('#scroll-horizontal button').should('not.be.visible')
@@ -275,7 +467,12 @@ describe('Testing example with example.cypress.io', () => {
     // Cypress knows to scroll to the right and down
     cy.get('#scroll-both button').scrollIntoView()
       .should('be.visible')
-    
+  })
+
+  it('Verify .scrollTo() examples', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('scrollTo').click()
+
     // cy.scrollTo() examples
     // if you chain .scrollTo() off of cy, we will
     // scroll the entire window
@@ -296,6 +493,11 @@ describe('Testing example with example.cypress.io', () => {
 
     // control the duration of the scroll (in ms)
     cy.get('#scrollable-both').scrollTo('center', { duration: 2000 })
+  })
+
+  it('Verify .trigger() example', () => {
+    cy.visit('https://example.cypress.io')
+    cy.contains('trigger').click()
 
     // .trigger() example
     cy.get('.trigger-input-range')
@@ -306,7 +508,6 @@ describe('Testing example with example.cypress.io', () => {
   })
 
   it('Verify navigating back to the home page', () => {
-    // cy.viewport('iphone-x')
     cy.visit('https://example.cypress.io')
 
     cy.contains('get').click()
