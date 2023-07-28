@@ -1,3 +1,5 @@
+import CypressExamplePage from "../support/page-objects/cypress-example-page"
+
 beforeEach(() => {
   cy.visit('https://example.cypress.io')
 })
@@ -19,8 +21,12 @@ describe('Querying page examples', () => {
   })
 
   it('Verify cy.get() examples', () => {
+    const cypressExamplePage = new CypressExamplePage()
+
     cy.visit('https://example.cypress.io')
-    cy.contains('get').click()
+    // Implement using page method to click the Get link
+    cypressExamplePage.getGetLink().click()
+    // cy.contains('get').click()
 
     // cy.get() examples
     cy.get('#query-btn').should('contain', 'Button')
@@ -52,16 +58,20 @@ describe('Querying page examples', () => {
   })
 
   it('Verify cy.contains() example', () => {
+    const cypressExamplePage = new CypressExamplePage()
+
     cy.visit('https://example.cypress.io')
-    cy.contains('contains').click()
+    cypressExamplePage.getContainsLink().click()
 
     // cy.contains() example
     cy.get('.query-list').contains('bananas').should('have.class', 'third')
   })
 
   it('Verify .within() examples', () => {
+    const cypressExamplePage = new CypressExamplePage()
+
     cy.visit('https://example.cypress.io')
-    cy.contains('within').click()
+    cypressExamplePage.getWithinLink().click()
   
     // .within() example
     cy.get('.query-form').within(() => {
@@ -77,8 +87,10 @@ describe('Querying page examples', () => {
   })
   
   it('Verify cy.root() example', () => {
+    const cypressExamplePage = new CypressExamplePage()
+
     cy.visit('https://example.cypress.io')
-    cy.contains('root').click()
+    cypressExamplePage.getRootLink().click()
   
     // cy.root() examples
     cy.root().should('match', 'html')
