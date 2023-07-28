@@ -1,3 +1,7 @@
+beforeEach(() => {
+  cy.visit('https://example.cypress.io')
+})
+
 describe('Querying page examples', () => {
   it('Verify on Querying page', () => {
     cy.visit('https://example.cypress.io')
