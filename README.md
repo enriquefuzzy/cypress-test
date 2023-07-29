@@ -27,4 +27,4 @@ Tests are automatically run when file is saved.
 
 Run tests headless with `npx cypress run` or `npx cypress run --headless`
 
-Run a single spec with like this `npx cypress run --spec "cypress/e2e/google-search.spec.cy.js"`
+Run a single spec by specifying the file `npx cypress run --spec "cypress/e2e/google-search.spec.cy.js"`
