@@ -21,4 +21,6 @@ import './commands'
 
 beforeEach(() => {
     cy.log('Before each test!')
+    // Log 'env' value from the the environment variables in cypress.config.js
+    cy.log('Env: Key1: = ' + Cypress.env("Key1"))
 })

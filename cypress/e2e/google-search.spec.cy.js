@@ -19,6 +19,8 @@ describe('Google search', function () {
 
     googleSearchPage.getSearchTextbox().type(this.data.dog_search).type('{enter}')
     cy.url().should('include', '/search?q=Dogs')
+    // Take a screenshot and save it with name 'Google search dogs.png'
+    cy.screenshot('Google search dogs')
     googleSearchPage.getSearchTextbox().should('have.value', 'Dogs')
     cy.contains('Dog').should('exist')
     googleSearchPage.getSearchResultTitleText().should('have.text', 'Dog')

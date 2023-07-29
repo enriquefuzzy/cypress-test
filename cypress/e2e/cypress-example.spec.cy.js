@@ -1,13 +1,12 @@
 import CypressExamplePage from "../support/page-objects/cypress-example-page"
 
 beforeEach(() => {
-  cy.visit('https://example.cypress.io')
+  // Visits baseUrl set in cypress.config.js
+  cy.visit('/')
 })
 
 describe('Querying page examples', () => {
   it('Verify on Querying page', () => {
-    cy.visit('https://example.cypress.io')
-
     // Alternate ways to assert text
     cy.contains('Kitchen Sink').should('not.contain', 'asdf')
     cy.get('.banner h1').should('have.text', 'Kitchen Sink')
@@ -23,7 +22,6 @@ describe('Querying page examples', () => {
   it('Verify cy.get() examples', () => {
     const cypressExamplePage = new CypressExamplePage()
 
-    cy.visit('https://example.cypress.io')
     // Implement using page method to click the Get link
     cypressExamplePage.getGetLink().click()
     // cy.contains('get').click()
@@ -60,7 +58,6 @@ describe('Querying page examples', () => {
   it('Verify cy.contains() example', () => {
     const cypressExamplePage = new CypressExamplePage()
 
-    cy.visit('https://example.cypress.io')
     cypressExamplePage.getContainsLink().click()
 
     // cy.contains() example
@@ -70,7 +67,6 @@ describe('Querying page examples', () => {
   it('Verify .within() examples', () => {
     const cypressExamplePage = new CypressExamplePage()
 
-    cy.visit('https://example.cypress.io')
     cypressExamplePage.getWithinLink().click()
   
     // .within() example
@@ -89,7 +85,6 @@ describe('Querying page examples', () => {
   it('Verify cy.root() example', () => {
     const cypressExamplePage = new CypressExamplePage()
 
-    cy.visit('https://example.cypress.io')
     cypressExamplePage.getRootLink().click()
   
     // cy.root() examples
@@ -104,7 +99,6 @@ describe('Querying page examples', () => {
 
 describe('Traversal page examples', () => {
   it('Verify on Traversal page', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('children').click()
 
     // Verify on Traversal page
@@ -114,7 +108,6 @@ describe('Traversal page examples', () => {
   })
 
   it('Verify .children() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('children').click()
 
     // .children() example
@@ -122,7 +115,6 @@ describe('Traversal page examples', () => {
   })
 
   it('Verify .closest() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('closest').click()
 
     // .closest() example
@@ -130,7 +122,6 @@ describe('Traversal page examples', () => {
   })
 
   it('Verify .eq() examples', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains(/^eq$/).click()
 
     // .eq() examples
@@ -140,7 +131,6 @@ describe('Traversal page examples', () => {
   })
 
   it('Verify .filter() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('filter').click()
 
     // .filter() example
@@ -148,7 +138,6 @@ describe('Traversal page examples', () => {
   })
 
   it('Verify .find() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('find').click()
 
     // .find() example
@@ -156,7 +145,6 @@ describe('Traversal page examples', () => {
   })
 
   it('Verify .first() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('first').click()
 
     // .first() example
@@ -164,7 +152,6 @@ describe('Traversal page examples', () => {
   })
 
   it('Verify .last() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('last').click()
 
     // .last() example
@@ -172,7 +159,6 @@ describe('Traversal page examples', () => {
   })
   
   it('Verify .next() examples', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('next').click()
 
     // .next() examples
@@ -181,7 +167,6 @@ describe('Traversal page examples', () => {
   })
 
   it('Verify .nextAll() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('nextAll').click()
 
     // .nextAll() example
@@ -189,7 +174,6 @@ describe('Traversal page examples', () => {
   })
 
   it('Verify .nextUntil() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('nextUntil').click()
 
     // .nextUntil() example
@@ -197,7 +181,6 @@ describe('Traversal page examples', () => {
   })
 
   it('Verify .not() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('not').click()
 
     // .not() example
@@ -205,7 +188,6 @@ describe('Traversal page examples', () => {
   })
 
   it('Verify .parent() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('parent').click()
 
     // .parent() example
@@ -213,7 +195,6 @@ describe('Traversal page examples', () => {
   })
 
   it('Verify .parents() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('parents').click()
 
     // .parents() example
@@ -221,7 +202,6 @@ describe('Traversal page examples', () => {
   })
 
   it('Verify .parentsUntil() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('parentsUntil').click()
 
     // .parentsUntil() example
@@ -229,7 +209,6 @@ describe('Traversal page examples', () => {
   })
 
   it('Verify .prev() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('prev').click()
 
     // .prev() example
@@ -237,7 +216,6 @@ describe('Traversal page examples', () => {
   })
 
   it('Verify .prevAll() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('prevAll').click()
 
     // .prevAll() example
@@ -245,7 +223,6 @@ describe('Traversal page examples', () => {
   })
 
   it('Verify .prevUntil() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('prevUntil').click()
 
     // .prevUntil() example
@@ -253,7 +230,6 @@ describe('Traversal page examples', () => {
   })
 
   it('Verify .siblings() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('siblings').click()
 
     // .siblings() example
@@ -263,7 +239,6 @@ describe('Traversal page examples', () => {
 
 describe('Actions page examples', () => {
   it('Verify on Actions page', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('type').click()
 
     // Should be on a new URL which includes '/commands/actions'
@@ -273,7 +248,6 @@ describe('Actions page examples', () => {
   })
 
   it('Verify .type() examples', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('type').click()
 
     // Get an input, type into it
@@ -289,7 +263,6 @@ describe('Actions page examples', () => {
   })
 
   it('Verify .focus() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('focus').click()
 
     // .focus() example
@@ -299,7 +272,6 @@ describe('Actions page examples', () => {
   })
 
   it('Verify .blur() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('blur').click()
 
     // .blur() example
@@ -309,7 +281,6 @@ describe('Actions page examples', () => {
   })
 
   it('Verify .clear() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('clear').click()
 
     // .clear() example
@@ -320,7 +291,6 @@ describe('Actions page examples', () => {
   })
 
   it('Verify .submit() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('submit').click()
 
     // .submit() example
@@ -329,7 +299,6 @@ describe('Actions page examples', () => {
   })
 
   it('Verify .click() examples', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains(/^click$/).click()
 
     // .click() examples
@@ -361,7 +330,6 @@ describe('Actions page examples', () => {
   })
 
   it('Verify .dblclick() examples', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('dblclick').click()
 
     // .dblclick() example
@@ -370,7 +338,6 @@ describe('Actions page examples', () => {
   })
 
   it('Verify .rightclick() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('rightclick').click()
 
     // .rightclick() example
@@ -379,7 +346,6 @@ describe('Actions page examples', () => {
   })
 
   it('Verify .check() examples', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('check').click()
 
     // .check() examples
@@ -408,7 +374,6 @@ describe('Actions page examples', () => {
   })
 
   it('Verify .uncheck() examples', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('uncheck').click()
 
     // .uncheck() examples
@@ -431,7 +396,6 @@ describe('Actions page examples', () => {
   })
 
   it('Verify .select() examples', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('select').click()
 
     // .select() examples
@@ -460,7 +424,6 @@ describe('Actions page examples', () => {
   })
 
   it('Verify .scrollIntoView() examples', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('scrollIntoView').click()
 
     // .scrollIntoView() examples
@@ -486,7 +449,6 @@ describe('Actions page examples', () => {
   })
 
   it('Verify .scrollTo() examples', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('scrollTo').click()
 
     // cy.scrollTo() examples
@@ -512,7 +474,6 @@ describe('Actions page examples', () => {
   })
 
   it('Verify .trigger() example', () => {
-    cy.visit('https://example.cypress.io')
     cy.contains('trigger').click()
 
     // .trigger() example
@@ -524,8 +485,6 @@ describe('Actions page examples', () => {
   })
 
   it('Verify navigating back to the home page', () => {
-    cy.visit('https://example.cypress.io')
-
     cy.contains('get').click()
     cy.url().should('include', '/commands/querying')
     cy.go('back')

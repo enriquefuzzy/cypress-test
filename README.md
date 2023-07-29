@@ -3,6 +3,7 @@
 ## Requirements:
 - Node: v18.16.1
 - Cypress: 12.17.0
+- cypress-cucumber-preprocessor: 4.3.1 (not yet implemented)
 
 ## Description
 Automate Cypress Command examples from https://example.cypress.io/
